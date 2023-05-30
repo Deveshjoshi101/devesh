@@ -1222,7 +1222,7 @@
       </section>
 
       <!-- Git Stats -->
-      <!-- <h1 id="github" data-aos="fade-down" data-aos-delay="250">
+      <h1 id="github" data-aos="fade-down" data-aos-delay="250">
         My GitHub Stats
       </h1>
       <img
@@ -1231,18 +1231,25 @@
         id="gitimg"
         data-aos="fade-down"
         data-aos-delay="250"
-      /> -->
+      />
 
-      <script>
-        fetch('https://github-contributions-api.vercel.app/v1/deveshjoshi101')
+      <!-- <script>
+        fetch('https://api.github.com/users/YourGitHubUsername/repos')
           .then(response => {
             if (!response.ok) {
-              throw new Error('Failed to fetch GitHub contributions');
+              throw new Error('Failed to fetch GitHub repositories');
             }
             return response.json();
           })
-          .then(data => {
-            const contributionsData = data.contributions;
+          .then(repos => {
+            const contributionsData = {};
+      
+            // Aggregate contributions data from each repository
+            repos.forEach(repo => {
+              const repoName = repo.name;
+              const contributions = repo.contributions || 0;
+              contributionsData[repoName] = contributions;
+            });
       
             // Prepare data for Chart.js
             const chartLabels = Object.keys(contributionsData);
@@ -1303,7 +1310,8 @@
       </h1>
       <div id="github-contributions" data-aos="fade-down" data-aos-delay="250">
         <canvas id="contributions-chart"></canvas>
-      </div>
+      </div> -->
+
       
 
       <!-- Git stats completed -->
