@@ -11,6 +11,7 @@
       href="https://unpkg.com/boxicons@latest/css/boxicons.min.css"
     />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <!-- Header Section -->
@@ -1082,7 +1083,7 @@
               <a
                 href="https://github.com/deveshjoshi101/Youtube-Clone"
                 target="_blank"
-                >Code Base</a
+                >GitHub</a
               >
               <a
                 href="https://velvety-narwhal-7fc5cb.netlify.app/"
@@ -1103,7 +1104,7 @@
               <a
                 href="https://github.com/deveshjoshi101/Spotify-Clone"
                 target="_blank"
-                >Code Base</a
+                >GitHub</a
               >
               <a
                 href="https://deveshjoshi101.github.io/Spotify-Clone/"
@@ -1221,7 +1222,7 @@
       </section>
 
       <!-- Git Stats -->
-      <h1 id="github" data-aos="fade-down" data-aos-delay="250">
+      <!-- <h1 id="github" data-aos="fade-down" data-aos-delay="250">
         My GitHub Stats
       </h1>
       <img
@@ -1230,49 +1231,82 @@
         id="gitimg"
         data-aos="fade-down"
         data-aos-delay="250"
-      />
+      /> -->
 
-      <!-- CONTACT SECTION -->
+      <script>
+        fetch('https://github-contributions-api.vercel.app/v1/deveshjoshi101')
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Failed to fetch GitHub contributions');
+            }
+            return response.json();
+          })
+          .then(data => {
+            const contributionsData = data.contributions;
+      
+            // Prepare data for Chart.js
+            const chartLabels = Object.keys(contributionsData);
+            const chartData = Object.values(contributionsData);
+      
+            // Set up chart options
+            const chartOptions = {
+              type: 'line',
+              data: {
+                labels: chartLabels,
+                datasets: [
+                  {
+                    label: 'Contributions',
+                    data: chartData,
+                    backgroundColor: 'rgba(0, 128, 0, 0.4)', // Light green background
+                    borderColor: 'rgba(0, 128, 0, 1)', // Dark green border
+                    borderWidth: 1,
+                    tension: 0.2,
+                    pointRadius: 2,
+                    pointBackgroundColor: 'rgba(0, 128, 0, 1)', // Green circle on each point
+                  },
+                ],
+              },
+              options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                  x: {
+                    display: false,
+                    grid: {
+                      display: false,
+                    },
+                  },
+                  y: {
+                    display: false,
+                    grid: {
+                      display: false,
+                    },
+                  },
+                },
+              },
+            };
+      
+            // Create the chart
+            const contributionsChart = new Chart(
+              document.getElementById('contributions-chart'),
+              chartOptions
+            );
+          })
+          .catch(error => {
+            console.error(error);
+            document.getElementById('github-contributions').innerHTML = '<p>Error fetching GitHub contributions</p>';
+          });
+      </script>
+      
+      <h1 id="github" data-aos="fade-down" data-aos-delay="250">
+        My GitHub Stats
+      </h1>
+      <div id="github-contributions" data-aos="fade-down" data-aos-delay="250">
+        <canvas id="contributions-chart"></canvas>
+      </div>
+      
 
-      <!-- <section class="contact section" id="contact">
-        <h2 class="section-title" data-aos="fade-down">Contact</h2> -->
-
-      <!-- <div class="contact_container bd_grid">
-          <form action="#" class="contact_form">
-            <input
-              type="text"
-              placeholder="Name"
-              class="control_input"
-              data-aos="fade-right"
-              data-aos-delay="250"
-            />
-            <input
-              type="mail"
-              placeholder="Email"
-              class="control_input"
-              data-aos="fade-right"
-              data-aos-delay="300"
-            />
-            <textarea
-              name=""
-              id=""
-              cols="0"
-              rows="10"
-              class="control_input"
-              data-aos="fade-right"
-              data-aos-delay="400"
-            ></textarea>
-
-            <input
-              type="button"
-              value="Send"
-              class="control_button button"
-              data-aos="fade-right"
-              data-aos-delay="450"
-            />
-          </form>
-        </div> -->
-      <!-- </section> -->
+      <!-- Git stats completed -->
 
       <!-- Contact -->
 
@@ -1288,20 +1322,6 @@
         <p class="footer_title" data-aos="fade-down">Devesh Joshi</p>
 
         <div class="footer_socials">
-          <!-- <a
-            href="#"
-            class="footer_icon"
-            data-aos="fade-down"
-            data-aos-delay="250"
-            ><i class="bx bxl-facebook-circle"></i
-          ></a>
-          <a
-            href="#"
-            class="footer_icon"
-            data-aos="fade-down"
-            data-aos-delay="350"
-            ><i class="bx bxl-instagram"></i
-          ></a> -->
           <a
             href="https://www.linkedin.com/in/deveshjoshi101/"
             target="_blank"
