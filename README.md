@@ -1,4 +1,4 @@
-# deveshjoshi101.github.io
+# https://deveshjoshi101.github.io/deveshjoshi
 # Hi, I'm Devesh Joshi
 
 ## Full Stack Developer
