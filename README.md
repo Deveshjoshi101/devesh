@@ -23,10 +23,10 @@ _"Without sharpening your weapon, standing on the battlefield would not increase
 - CSS3
 - JavaScript
 - Java
-- Spring Core
+- Python
 - Spring Boot
 - MySQL
-- JPA / Hibernate
+- NodeJS
 - Maven
 
 ## Projects
